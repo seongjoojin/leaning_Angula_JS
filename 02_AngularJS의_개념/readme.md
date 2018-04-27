@@ -21,3 +21,7 @@ Controller : the business logic behind views
 Service : reusable business logic independent of views
 
 재사용할 수 있는 비지니스 로직을 Service로 표현됨
+
+# Augular JS 개발 환경 구성
+
+plunker 사용
