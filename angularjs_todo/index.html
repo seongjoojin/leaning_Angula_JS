@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" charset="UTF-8"></script>
-    </head>
-    <body ng-app="todo" ng-controller="TodoCtrl">
-      <ul>
-            <li ng-repeat="todo in todos" class="list-unstyled">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="checkbox" ng-model="todo.completed">
-                        </span>
-                        <input type="text" class="form-control" ng-model="todo.title">
-                    </div><!-- /input-group -->
-                    <date>{{ todo.createAt }}</date>
-            </li>
-        </ul>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" charset="UTF-8" type="text/javascript"></script>
+</head>
+<body ng-app="todo" ng-controller="TodoCtrl">
+<div class="container">
+    <h1>todo list</h1>
+    <form name="todoForm" ng-submit="add(newTodoTitle)">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="newTodoTitle">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">추가</button>
+            </span>
+        </div>
+    </form>
+    <ul>
+        <li ng-repeat="todo in todos | filter:statusFilter" class="list-unstyled">
+            <div class="input-group">
+                  <span class="input-group-addon">
+                      <input type="checkbox" ng-model="todo.completed">
+                  </span>
+                <input type="text" class="form-control" ng-model="todo.title">
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" ng-click="remove(todo)">삭제</button>
+                </span>
+            </div><!-- /input-group -->
+            <date>{{ todo.createAt | date:'yyyy-MM-dd HH:mm:ss' }}</date>
+        </li>
+    </ul>
+    <button class="btn btn-primary" ng-click="statusFilter={completed:true}">Completed</button>
+    <button class="btn btn-primary" ng-click="statusFilter={completed:false}">Active</button>
+    <button class="btn btn-primary" ng-click="statusFilter={}">All</button>
+</div>
+</body>
 </html>
