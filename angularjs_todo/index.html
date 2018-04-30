@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" charset="UTF-8" type="text/javascript"></script>
+    <script src="directives.js" charset="UTF-8" type="text/javascript"></script>
 </head>
 <body ng-app="todo" ng-controller="TodoCtrl">
 <div class="container">
@@ -24,16 +25,6 @@
     <!--<pre>{{ todoForm | json }}}</pre>-->
     <ul>
         <li ng-repeat="todo in todos | filter:statusFilter" class="list-unstyled">
-            <!--<div class="input-group">
-                  <span class="input-group-addon">
-                      <input type="checkbox" ng-model="todo.completed">
-                  </span>
-                <input type="text" class="form-control" ng-model="todo.title">
-                <span class="input-group-btn">
-                    <button class="btn btn-danger" type="button" ng-click="remove(todo)">삭제</button>
-                </span>
-            </div>&lt;!&ndash; /input-group &ndash;&gt;
-            <date>{{ todo.createAt | date:'yyyy-MM-dd HH:mm:ss' }}</date>-->
             <todo-item></todo-item>
         </li>
     </ul>
